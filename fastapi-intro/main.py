@@ -1,29 +1,18 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+
+class Item(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+    tax: float | None = None
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str=None):
-    return {"item_id": item_id, "q": q}
-
-
-@app.get("/hello/{name}")
-def say_hello(name : str):
-    return {"message": f"Hello, {name}!"}
-
-@app.get("/hello/spanish/{name}")
-def say_hello(name : str):
-    return {"message": f"Hello, {name}!"}
-
-
-@app.get("/goodbye/{name}")
-def say_goodbye(name : str):
-    return {"message": f"Goodbye, {name}"}
-
-@app.get("/goodbye/spanish/{name}")
-def say_goodbye_spanish(name : str):
-    return {"message": f"Adios, {name}"}
+@app.post("/items/")
+async def create_item(item: Item):
+    item_dict = item.model_dump()
+    if item.tax is not None:
+        price_with_tax = item.price + item.tax
+        item_dict.udpate({"price_with_tax": price_with_tax})
+    return item_dict
