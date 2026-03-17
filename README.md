@@ -7,6 +7,5 @@ Originally was using a Claude Curriculum but decided to focus on Python.
 Learn Python fundamentals so I can build and ship.
 
 ## Structure
--week folders contain problem set files and lecture folder
-// -lecture folders within week folders contain lecture examples
+-week folders contain problem set files and lecture folder <br/>  -lecture folders within week folders contain lecture examples
 
