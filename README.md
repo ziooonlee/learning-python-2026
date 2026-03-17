@@ -1,7 +1,7 @@
 # Learning Python (2026)
 
-Repository for CS50 Python work and experiements.
-Originally was using a Claude Curriculum but decided to focus on Python.
+Repository for CS50 Python work and experiments.
+Originally was using a Claude curriculum but decided to focus on Python.
 
 ## Goal
 Learn Python fundamentals so I can build and ship.
